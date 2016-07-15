@@ -19,10 +19,16 @@ module TicTacToe
       false
     end
 
+    def formatted_grid
+      grid.each do |row|
+        puts row.map { |cell| cell.value.empty? ? "_" : cell.value }.join(" ")
+      end
+    end
+
     private
 
     def default_grid
-      Array.new(3) { Array.new(3) { Cell.new } }
+      Array.new(4) { Array.new(4) { Cell.new } }
     end
 
     def draw?
@@ -37,8 +43,8 @@ module TicTacToe
 
     def diagonals
     [
-      [get_cell(0, 0), get_cell(1, 1), get_cell(2, 2)],
-      [get_cell(0, 2), get_cell(1, 1), get_cell(2, 0)]
+      [get_cell(0, 0), get_cell(1, 1), get_cell(2, 2), get_cell(3, 3)],
+      [get_cell(0, 2), get_cell(1, 1), get_cell(2, 0), get_cell(3, 0)]
     ]
     end
 

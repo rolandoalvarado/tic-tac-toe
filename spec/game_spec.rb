@@ -8,13 +8,13 @@ module TicTacToe
  
     context "#initialize" do
       it "randomly selects a current_player" do
-        Array.any_instance.stub(:shuffle) { [roland, blake] }
+        allow_any_instance_of(Array).to receive(:shuffle) { [roland, blake] }
         game = Game.new([blake, roland])
         expect(game.current_player).to eq roland
       end
- 
+
       it "randomly selects an other player" do
-        Array.any_instance.stub(:shuffle) { [roland, blake] }
+        allow_any_instance_of(Array).to receive(:shuffle) { [roland, blake] }
         game = Game.new([blake, roland])
         expect(game.other_player).to eq blake
       end
@@ -33,6 +33,34 @@ module TicTacToe
         current_player = game.current_player
         game.switch_players
         expect(game.other_player).to eq current_player
+      end
+    end
+
+    context "#get_move" do
+      it "converts human_move of '1' to [0, 0]" do
+        game = Game.new([blake, roland])
+        expect(game.get_move("1")).to eq [0, 0]
+      end
+
+      it "converts human_move of '1' to [0, 0]" do
+        game = Game.new([blake, roland])
+        expect(game.get_move("7")).to eq [2, 1]
+      end
+    end
+
+    context "#game_over_message" do
+      it "returns '{current player name} won!' if board shows a winner" do
+        game = Game.new([blake, roland])
+        allow(game).to receive(:current_player) { blake }
+        allow(game.board).to receive(:game_over) { :winner }
+        expect(game.game_over_message).to eq "blake is the winner!"
+      end
+
+      it "returns 'The game ended in a tie' if board shows a draw" do
+        game = Game.new([blake, roland])
+        allow(game).to receive(:current_player) { blake }
+        allow(game.board).to receive(:game_over) { :draw }
+        expect(game.game_over_message).to eq "The game ended in a tie"
       end
     end
 

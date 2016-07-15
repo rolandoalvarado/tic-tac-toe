@@ -3,9 +3,9 @@ require "spec_helper"
 module TicTacToe
   describe Player do
     context "#initialize" do
- 
+
       it "raises an exception when initialized with {}" do
-        expect { Player.new({}) }.to raise_error
+      	expect { Player.new({}) }.to raise_error(/key not found: :color/)
       end
 
       it "does not raise an error when initialized with a valid input hash" do
