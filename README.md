@@ -92,7 +92,7 @@ Or install it yourself as:
   =>  tic_tac_toe git:(master) $ rake generate_all
 
 
-  To run everything:
+  To run all specs:
 
     =>  tic_tac_toe git:(master) $ rake specs
       /home/blake/.rbenv/versions/2.3.1/bin/ruby -I/home/blake/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rspec-support-3.5.0/lib:/home/blake/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rspec-core-3.5.1/lib /home/blake/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rspec-core-3.5.1/exe/rspec --pattern spec/\*_spec.rb --backtrace
